@@ -1,0 +1,14 @@
+{
+  "name": "@openclaw/ainas",
+  "version": "2026.2.3",
+  "description": "OpenClaw plugin for AINAS media and file search",
+  "type": "module",
+  "devDependencies": {
+    "openclaw": "workspace:*"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

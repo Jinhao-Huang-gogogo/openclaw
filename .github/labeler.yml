@@ -202,6 +202,10 @@
   - changed-files:
       - any-glob-to-any-file:
           - "extensions/google-gemini-cli-auth/**"
+"extensions: ainas":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "extensions/ainas/**"
 "extensions: llm-task":
   - changed-files:
       - any-glob-to-any-file:
