@@ -195,3 +195,66 @@ curl -X GET http://localhost:5000/api/v1/system/status
 3. 所有请求头设置：`Authorization: Bearer ainas-token`。
 
 本服务仅返回规范中的伪数据，不持久化、不连真实 NAS。
+
+---
+
+## 八、OpenClaw Skills API 测试工具 (test_skills_api.py)
+
+`test_skills_api.py` 是一个 Python 客户端脚本，用于测试 OpenClaw Gateway 的技能管理接口 (`/assistant/skills`)。
+
+### 8.1 环境与依赖
+
+- **Python**: 3.x
+- **依赖**: `requests`
+
+```bash
+pip install requests
+```
+
+### 8.2 配置与运行
+
+该脚本支持通过环境变量进行配置：
+
+| 环境变量             | 默认值                   | 说明                                            |
+| :------------------- | :----------------------- | :---------------------------------------------- |
+| `OPENCLAW_API_URL`   | `http://localhost:18789` | OpenClaw Gateway 的 API 地址                    |
+| `AINAS_ACCESS_TOKEN` | `ainas-token`            | 用于认证的 Bearer Token (需与 Gateway 配置一致) |
+
+**运行示例**：
+
+```bash
+# 使用默认配置运行 (假设 Gateway 在 localhost:18789，且 Token 为 ainas-token)
+python test_skills_api.py
+
+# 指定 Gateway 地址和 Token 运行
+export OPENCLAW_API_URL=http://localhost:19001
+export AINAS_ACCESS_TOKEN=your-secret-token
+python test_skills_api.py
+```
+
+### 8.3 等效 curl 命令
+
+您也可以使用 `curl` 直接调用这些接口进行测试。
+
+**获取技能列表 (GET)**
+
+```bash
+curl -X GET http://localhost:18789/assistant/skills \
+  -H "Authorization: Bearer ainas-token"
+```
+
+**启用/禁用技能 (PATCH)**
+
+```bash
+# 禁用 id 为 "1password" 的技能
+curl -X PATCH http://localhost:18789/assistant/skills/1password \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ainas-token" \
+  -d '{"enabled": false}'
+
+# 启用 id 为 "1password" 的技能
+curl -X PATCH http://localhost:18789/assistant/skills/1password \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ainas-token" \
+  -d '{"enabled": true}'
+```

@@ -1,5 +1,5 @@
 ---
-name: AINAS NAS
+name: ainas
 description: Search files, AI media, and album categories on AINAS NAS.
 metadata:
   {
@@ -16,9 +16,9 @@ metadata:
   }
 ---
 
-# AINAS NAS
+# AINAS
 
-通过自然语言控制 AINAS NAS 的媒体搜索、文件搜索和相册分类。
+通过自然语言控制 AINAS 的媒体搜索、文件搜索和相册分类。
 
 ## 工具
 
